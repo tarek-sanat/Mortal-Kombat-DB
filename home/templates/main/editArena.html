@@ -1,0 +1,42 @@
+{% extends 'main/main.html'%}
+
+{% block title %} Edit Arena {% endblock %}
+
+{%block content %}
+<div class="d-flex justify-content-center">
+    <h1>Edit Arena:</h1>
+</div>
+<div class="d-flex justify-content-center">
+    
+    <div class="w-25 p-3" style="justify-content: center;">
+        <form method="post">
+            
+            {% csrf_token %} 
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name = "name" value ="{{arenaInfo.arenaInfo.1}}" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Select Location:</label>
+                <select class="form-control" id="location" name = "location" required>
+                    <option>{{arenaInfo.locationInfo}}</option>
+                    {% for location in arenaInfo.location %}
+                        {% if not location.0 == arenaInfo.locationInfo %}
+                            <option>{{location.0}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="charDesc">Description:</label>
+                <textarea class="form-control" id="charDesc" rows="6" name = "text" required>{{arenaInfo.arenaInfo.4}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Image</label>
+                <input type="text" class="form-control" id="image" name = "image" value = "{{arenaInfo.arenaInfo.2}}" required>
+            </div>
+            <button type="submit" class="btn btn-success">Edit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

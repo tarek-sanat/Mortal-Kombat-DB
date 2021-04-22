@@ -1,0 +1,23 @@
+{% extends 'main/main.html'%}
+
+{% block title %} {{arena.arenaInfo.1}} {% endblock %}
+
+{%block content %}
+{{info}}
+
+<div class="container">
+    <div class="d-flex flex-row">
+        <div class="p-2">
+            <div class="card " style="width: 40rem; " >
+                <img style="height: 20rem" class="card-img-top" src="{{arena.arenaInfo.2}}" alt="Card image cap">
+                    <div class="card-body ">
+                        <h5 class="card-title justify-content-center">{{arena.arenaInfo.1}}</h5>
+                        <p class="card-text justify-content-center">Location: {{arena.locationInfo.0.1}}</p>
+                    </div>
+            </div>
+        </div>
+        <div class="p-2" style="margin: 3rem; "><h2>Description:</h2></h2><h3>{{arena.arenaInfo.4}}</h3></div>
+      </div>
+      <hr>
+</div>
+{% endblock %}
