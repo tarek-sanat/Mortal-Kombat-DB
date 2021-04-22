@@ -1,0 +1,39 @@
+{% extends 'main/main.html'%}
+
+{% block title %} Characters {% endblock %}
+
+{% block content %}
+
+
+<div class='container'>
+  
+  
+  <div class='row justify-content-center'>
+    {% for char in characters %}
+    <div class="col-xs-2 m-4 " >
+        <img style="width: 8rem; height: 10rem; display: block; margin-left: auto; margin-right: auto;" src={{char.5}} class="card-img-top" alt="...">
+        <div class="row justify-content-center">
+          <div class="col-xs-3 "><a href="{{char.0}}" class="btn btn-primary btn-sm m-2">{{char.1}}</a></div>
+          {% if user.is_authenticated %}
+            <div class="col-xs-3"><a href="/characters/edit/{{char.0}}" class="btn btn-success btn-sm m-2">Edit</a></div>
+            <div class="col-xs-3"><a href="/characters/delete/{{char.0}}" class="btn btn-danger btn-sm m-2">Delete</a></div>
+          {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    
+    
+    
+  </div>
+  {% if user.is_authenticated %}
+    <div class="col-xs-3">
+      <a href="/characters/add/" class="btn btn-success btn-sm m-2">Add Character</a>
+    </div>
+  {% endif %}
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'main/main.html'%}
+
+{% block title %} arenas {% endblock %}
+
+
+{% block content %}
+<div class='container'>
+  
+    <div class='row justify-content-center'>
+      {% for a in arena %}
+        <div class="col-xs-2 m-4" >
+            <img style="width: 18rem; height: 10rem; display: block; margin-left: auto; margin-right: auto;" src={{a.2}} class="card-img-top" alt="...">
+            <div class="row justify-content-center">
+              <div class="col-xs-3"><a href="{{a.0}}" class="btn btn-primary btn-sm m-2">{{a.1}}</a></div>
+              {% if user.is_authenticated %}
+                <div class="col-xs-3"><a href="/arenas/edit/{{a.0}}" class="btn btn-success btn-sm m-2">Edit</a></div>
+                <div class="col-xs-3"><a href="/arenas/delete/{{a.0}}" class="btn btn-danger btn-sm m-2">Delete</a></div>
+              {% endif %}
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if user.is_authenticated %}
+      <div class="col-xs-3">
+        <a href="/arenas/add/" class="btn btn-success btn-sm m-2">Add Arena</a>
+      </div>
+    {% endif %}
+</div>
+{% endblock %}

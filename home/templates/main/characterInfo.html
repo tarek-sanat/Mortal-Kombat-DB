@@ -1,0 +1,68 @@
+{% extends 'main/main.html'%}
+
+{% block title %} {{charInfo.charInfo.1}} {% endblock %}
+
+{%block content %}
+<div class="container">
+    <div class="d-flex flex-row">
+        <div class="p-2">
+            <div class="card " style="width: 18rem; " >
+                <img style="height: 20rem" class="card-img-top" src="{{charInfo.charInfo.5}}" alt="Card image cap">
+                    <div class="card-body ">
+                        <h5 class="card-title justify-content-center">{{charInfo.charInfo.1}} </h5>
+                        <p class="card-text justify-content-center">Location: {{charInfo.locationInfo}}</p>
+                    </div>
+            </div>
+        </div>
+        <div class="p-2" style="margin: 3rem; "><h2>Description:</h2></h2><h3>{{charInfo.charInfo.4}}</h3></div>
+      </div>
+      <hr>
+</div>
+<div class ="container">
+    <div class="btn">
+        <h1>Combos</h1>
+    </div>
+    {% if user.is_authenticated %}
+        <a class="btn btn-success" href="/characters/{{charInfo.charInfo.0}}/addCombo">Add Combo</a>
+    {% endif %}
+
+    <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Playstation</th>
+                  <th scope="col">Xbox</th>
+                  {% if user.is_authenticated %}
+                    <th scope="col"></th>
+                  {% endif %}
+                </tr>
+              </thead>
+              <tbody>
+                {% for combo in charInfo.combos %}
+                    <tr>
+                    <th scope="row">{{ combo.1}}</th>
+                        <td>{{ combo.2}} </td>
+                        <td>{{ combo.3}}</td>
+                        <td>{{ combo.4}}</td>
+                        {% if user.is_authenticated %}
+                            <td class = "text-right" style="width:  180px">
+                                <a href="/characters/{{charInfo.charInfo.0}}/editCombo/{{ combo.0}}" class="btn btn-success">Edit</a>
+                                <a href="/characters/{{charInfo.charInfo.0}}/deleteCombo/{{ combo.0}}" class="btn btn-danger">Delete</a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    
+   
+    
+</div>
+{% endblock %}
