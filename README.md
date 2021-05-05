@@ -5,7 +5,7 @@
 Discover the characters of the game Mortal Kombat 11.
 
 ### Getting Started
-This is a group project for CSI-3450 at Oakland University.
+This is a project for CSI-3450 at Oakland University.
 
 ### Prerequisites
 
