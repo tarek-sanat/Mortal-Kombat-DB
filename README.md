@@ -9,7 +9,7 @@ This is a project for CSI-3450 at Oakland University.
 
 ### Prerequisites
 
-What need to install and how to install them
+What you need to install and how to install them
 
 ```
  - Django
